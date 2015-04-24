@@ -56,13 +56,19 @@ $("#butt2").on("click", function(){
 
 $("#butt3").on("click", function(){
 	console.log("Hi");
-	// var nameArray = shuffleArray(nameArray);
+	nameArray = shuffleArray(nameArray);
 	nameArray = group(7, nameArray);
 	console.log(nameArray);
 	for(var i = 0; i < 7; i ++) {
 		$("#group1").append("<li>"+nameArray[0][i]+"</li>");
-		$("#group2").append("<li>"+nameArray[1][i]+"</li>");
-		$("#group3").append("<li>"+nameArray[2][i]+"</li>");
+	}
+	
+	for(i = 0; i < 7; i ++) {
+	$("#group2").append("<li>"+nameArray[1][i]+"</li>");
+	}
+	
+	for(i = 0; i < 6; i ++) {
+	$("#group3").append("<li>"+nameArray[2][i]+"</li>");
 	}
 
 });
