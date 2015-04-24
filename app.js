@@ -73,6 +73,35 @@ $("#butt3").on("click", function(){
 
 });
 
+$("#butt4").on("click", function(){
+	nameArray = shuffleArray(nameArray);
+	nameArray = group(5, nameArray);
+	console.log(nameArray);
+	for(var i = 0; i < 5; i ++) {
+		$("#group1").append("<li>"+nameArray[0][i]+"</li>");
+		$("#group2").append("<li>"+nameArray[1][i]+"</li>");
+		$("#group3").append("<li>"+nameArray[2][i]+"</li>");
+		$("#group4").append("<li>"+nameArray[3][i]+"</li>");
+	}
+	
+});
+
+$("#butt5").on("click", function(){
+	nameArray = shuffleArray(nameArray);
+	nameArray = group(4, nameArray);
+	console.log(nameArray);
+	for(var i = 0; i < 4; i ++) {
+		$("#group1").append("<li>"+nameArray[0][i]+"</li>");
+		$("#group2").append("<li>"+nameArray[1][i]+"</li>");
+		$("#group3").append("<li>"+nameArray[2][i]+"</li>");
+		$("#group4").append("<li>"+nameArray[3][i]+"</li>");
+		$("#group5").append("<li>"+nameArray[4][i]+"</li>");
+	}
+	
+});
+
+
+
 
 });
 
