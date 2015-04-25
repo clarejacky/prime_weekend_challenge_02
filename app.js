@@ -50,20 +50,35 @@ function makeMaster(object) {
 
 $(document).ready(function(){
 
-
-
-$("#refresh").on("click", function(){
+function refresh() {
 	for (var i = 0; i < masterArray.length; i++) {
 		for (var j = 0; j < masterArray[i].length; j++) {
 			$("#group"+i+"").append("<li>"+masterArray[i][j]+"</li>");
 		}
 	}
-	console.log(masterArray);
+};
+
+var isClicked = false;
+var object = button2;
+
+$("#refresh").on("click", function(){
+	if(masterArray.length == 0){
+		alert("Please select a number");
+	} else if (isClicked == false) {
+	refresh();
+	isClicked = true;
+	} else {
+		$("ul").empty();
+		masterArray = [];
+		makeMaster(object);
+		refresh();
+	}
 });
 	
 
 $("#butt2").on("click", function(){
 	makeMaster(button2);
+	object = button2;
 	console.log(masterArray);
 });
 	
