@@ -11,6 +11,9 @@ li {
 ul {
 	display: inline;
 	float: left;
-	margin: 20px 0;
+	margin: 20px 15px;
 }
-
+div {
+	display: inline;
+	float: left;
+}

@@ -3,9 +3,8 @@ var i =0;
 var nameArray = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
 
 
-function Button (groupNum, spliceVar) {
+function Button (groupNum) {
 	this.groupNum = groupNum;
-	this.spliceVar = spliceVar
 }
 
 function shuffleArray(array) {
@@ -18,41 +17,31 @@ function shuffleArray(array) {
     return array;
 }
 
-var button2 = new Button( 2, 10);
-var button3 = new Button( 3, 7);
-var button4 = new Button( 4, 5);
-var button5 = new Button( 5, 4);
-var button6 = new Button( 6, 3);
-var button7 = new Button( 7, 3);
-var button8 = new Button( 8, 2);
-var button9 = new Button( 9, 2);
-var button10 = new Button( 10, 2);
+var button2 = new Button( 2);
+var button3 = new Button( 3);
+var button4 = new Button( 4);
+var button5 = new Button( 5);
+var button6 = new Button( 6);
+var button7 = new Button( 7);
+var button8 = new Button( 8);
+var button9 = new Button( 9);
+var button10 = new Button( 10);
 
-var groupSize;
+var groupSize = 0;
 
 function makeMaster(object) {
 	nameArray = shuffleArray(nameArray);
 	groupSize = object.groupNum;
-	// for (var i = 0; i < object.groupNum - 1; i++)  {
-	// 	masterArray[i] = nameArray.splice(0, object.spliceVar);
-	// }
-	// masterArray.push(nameArray);
-	// 	i = 0;
-	// 	while (nameArray.length > object.spliceVar) {
-	// 		var ell = nameArray.pop();
-	// 		masterArray[i].push(ell);
-	// 		i++;
-	// 	}
-	// return masterArray;
-	// console.log(masterArray);
 }
 
 function refresh() {
 	var count = 0;
 	for (var i = 0; i < nameArray.length; i++) {
-			$("#group"+count).append("<li>"+nameArray[i]+"</li>");
-			$("#group"+count).show();
+			// $("#group"+count).fadeIn("Group"+count);
+			$("#group"+count).append("<li>"+nameArray[i]+"</li>").hide().fadeIn("slow");
+			$("#heading"+count).fadeIn("slow");
 			count++;
+			
 			if (count == groupSize) {
 				count = 0;
 			}
@@ -61,15 +50,15 @@ function refresh() {
 
 $(document).ready(function(){
 
-$("ul").hide();
+$("h5").hide();
 
 $("#refresh").on("click", function(){
-	// if(masterArray.length == 0){
-	// 	alert("Please select a group number");
-	// } else {
+	if (groupSize < 2) {
+		alert("You have not selected a group number");
+	} else {
 		$("ul").empty();
-		// makeMaster(object);
 		refresh();
+	}
 });
 	
 
