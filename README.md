@@ -1,4 +1,11 @@
+Notes on this file:
 
+This project contains an index.html file, app.js file, a jquery library, and a stylesheet. 
+The javascript file use both javascript and jquery to sort an exisitng array and push the content to the DOM. 
+
+The purpose of the file is to sort an array of 20 students into varying size groups. By selecting the group number, the array is filetered to the DOM, creating as many groups as the user selected. 
+
+Instructions
 <p>Welcome to your weekend challenge Primers!</p>
 
 <p>This weekend, you will create a team randomizer. In order to complete this challenge, you will need to use Javascript and jQuery. Not only will you need to randomly create teams, but you will also need to animate the assignment to add a layer of ‘cool’. </p>
