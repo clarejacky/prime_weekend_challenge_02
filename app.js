@@ -1,17 +1,12 @@
-// function randomNumber(min, max) {
-// 	return Math.floor(Math.random() * (1 + max - min) + min);
-// }
+
 var i =0;
-var nameArray = ["Scott", "Clare", "Chelsea", "Michelle", "Kasey", "Aaron", "Terry", "Michael", "Tracy", "Erik", "Cody", "Mary", "Vince", "Steve", "Rom", "Brian", "Luke", "Kelly", "Jeanne", "Alicia",];
+var nameArray = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
 
-function chunk (array, size) {
-  return array.reduce(function (res, item, index) {
-    if (index % size === 0) { res.push([]); }
-    res[res.length-1].push(item);
-    return res;
-  }, []);
+
+function Button (groupNum, spliceVar) {
+	this.groupNum = groupNum;
+	this.spliceVar = spliceVar
 }
-
 
 function shuffleArray(array) {
     for(var i = (array.length - 1); i > 0; i--) {
@@ -22,86 +17,90 @@ function shuffleArray(array) {
     }
     return array;
 }
-console.log(shuffleArray(nameArray));
 
-function group(num, nameArray) {
-	//var nameArray = shuffleArray(nameArray);
-	var nameArray = chunk(nameArray, num);
-	return nameArray;
+var button2 = new Button( 2, 10);
+var button3 = new Button( 3, 7);
+var button4 = new Button( 4, 5);
+var button5 = new Button( 5, 4);
+var button6 = new Button( 6, 3);
+var button7 = new Button( 7, 3);
+var button8 = new Button( 8, 3);
+var button9 = new Button( 9, 2);
+var button10 = new Button( 10, 2);
 
+
+var masterArray = [];
+
+function makeMaster(object) {
+	// masterArray = [];
+	nameArray = shuffleArray(nameArray);
+	for (var i = 0; i < object.groupNum - 1; i++)  {
+		masterArray[i] = nameArray.splice(0, object.spliceVar);
+	}
+	masterArray.push(nameArray);
+	return masterArray;
+	console.log(masterArray);
 }
-console.log(group(10, nameArray));
 
-// 	//var group1 = [nameArray[0], nameArray[1], nameArray[2], nameArray[3], nameArray[4], nameArray[5], nameArray[6], nameArray[7], nameArray[8], nameArray[9]];
-// 	//var group2 = [nameArray[10], nameArray[11], nameArray[12], nameArray[13], nameArray[14], nameArray[15], nameArray[16], nameArray[17], nameArray[18], nameArray[19]];	
-// //shuffle the array and then pull spots that are fixed. 
-// //if each group breakdown pulls from a particular array indice than it would pull that but randomized
 
 $(document).ready(function(){
 
-var nameArray = ["Scott", "Clare", "Chelsea", "Michelle", "Kasey", "Aaron", "Terry", "Michael", "Tracy", "Erik", "Cody", "Mary", "Vince", "Steve", "Rom", "Brian", "Luke", "Kelly", "Jeanne", "Alicia",];
+
+
+$("#refresh").on("click", function(){
+	for (var i = masterArray.length; i = 0; i++) {
+		for (var j = 0; j < masterArray[i].length; j++) {
+			$("#group"+i+"").append("<li>"+masterArray[i][j]+"</li>");
+		}
+	}
+	console.log(masterArray);
+});
+	
 
 $("#butt2").on("click", function(){
-	console.log("Hi");
-	// var nameArray = shuffleArray(nameArray);
-	nameArray = group(10, nameArray);
-	console.log(nameArray);
-	for(var i = 0; i < 10; i ++) {
-		$("#group1").append("<li>"+nameArray[0][i]+"</li>");
-		$("#group2").append("<li>"+nameArray[1][i]+"</li>");
-	}
-
+	makeMaster(button2);
+	console.log(masterArray);
 });
-
-
+	
 $("#butt3").on("click", function(){
-	console.log("Hi");
-	nameArray = shuffleArray(nameArray);
-	nameArray = group(7, nameArray);
-	console.log(nameArray);
-	for(var i = 0; i < 7; i ++) {
-		$("#group1").append("<li>"+nameArray[0][i]+"</li>");
-	}
-	
-	for(i = 0; i < 7; i ++) {
-	$("#group2").append("<li>"+nameArray[1][i]+"</li>");
-	}
-	
-	for(i = 0; i < 6; i ++) {
-	$("#group3").append("<li>"+nameArray[2][i]+"</li>");
-	}
-
+	makeMaster(button3);
+	console.log(masterArray);
 });
 
 $("#butt4").on("click", function(){
-	nameArray = shuffleArray(nameArray);
-	nameArray = group(5, nameArray);
-	console.log(nameArray);
-	for(var i = 0; i < 5; i ++) {
-		$("#group1").append("<li>"+nameArray[0][i]+"</li>");
-		$("#group2").append("<li>"+nameArray[1][i]+"</li>");
-		$("#group3").append("<li>"+nameArray[2][i]+"</li>");
-		$("#group4").append("<li>"+nameArray[3][i]+"</li>");
-	}
-	
+	makeMaster(button4);
+	console.log(masterArray);
 });
 
 $("#butt5").on("click", function(){
-	nameArray = shuffleArray(nameArray);
-	nameArray = group(4, nameArray);
-	console.log(nameArray);
-	for(var i = 0; i < 4; i ++) {
-		$("#group1").append("<li>"+nameArray[0][i]+"</li>");
-		$("#group2").append("<li>"+nameArray[1][i]+"</li>");
-		$("#group3").append("<li>"+nameArray[2][i]+"</li>");
-		$("#group4").append("<li>"+nameArray[3][i]+"</li>");
-		$("#group5").append("<li>"+nameArray[4][i]+"</li>");
-	}
-	
+	makeMaster(button5);
+	console.log(masterArray);
 });
 
+$("#butt6").on("click", function(){
+	makeMaster(button6);
+	console.log(masterArray);
+});
 
+$("#butt7").on("click", function(){
+	makeMaster(button7);
+	console.log(masterArray);
+});
 
+$("#butt8").on("click", function(){
+	makeMaster(button8);
+	console.log(masterArray);
+});
+
+$("#butt9").on("click", function(){
+	makeMaster(button9);
+	console.log(masterArray);
+});
+
+$("#butt10").on("click", function(){
+	makeMaster(button10);
+	console.log(masterArray);
+});
 
 });
 
