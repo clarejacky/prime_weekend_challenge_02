@@ -24,7 +24,7 @@ var button4 = new Button( 4, 5);
 var button5 = new Button( 5, 4);
 var button6 = new Button( 6, 3);
 var button7 = new Button( 7, 3);
-var button8 = new Button( 8, 3);
+var button8 = new Button( 8, 2);
 var button9 = new Button( 9, 2);
 var button10 = new Button( 10, 2);
 
@@ -32,12 +32,17 @@ var button10 = new Button( 10, 2);
 var masterArray = [];
 
 function makeMaster(object) {
-	// masterArray = [];
 	nameArray = shuffleArray(nameArray);
 	for (var i = 0; i < object.groupNum - 1; i++)  {
 		masterArray[i] = nameArray.splice(0, object.spliceVar);
 	}
 	masterArray.push(nameArray);
+		i = 0;
+		while (nameArray.length > object.spliceVar) {
+			var temp = nameArray.pop();
+			masterArray[i].push(temp);
+			i++;
+		}
 	return masterArray;
 	console.log(masterArray);
 }
@@ -48,7 +53,7 @@ $(document).ready(function(){
 
 
 $("#refresh").on("click", function(){
-	for (var i = masterArray.length; i = 0; i++) {
+	for (var i = 0; i < masterArray.length; i++) {
 		for (var j = 0; j < masterArray[i].length; j++) {
 			$("#group"+i+"").append("<li>"+masterArray[i][j]+"</li>");
 		}
