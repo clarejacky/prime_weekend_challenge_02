@@ -28,98 +28,94 @@ var button8 = new Button( 8, 2);
 var button9 = new Button( 9, 2);
 var button10 = new Button( 10, 2);
 
-
-var masterArray = [];
+var groupSize;
 
 function makeMaster(object) {
 	nameArray = shuffleArray(nameArray);
-	for (var i = 0; i < object.groupNum - 1; i++)  {
-		masterArray[i] = nameArray.splice(0, object.spliceVar);
-	}
-	masterArray.push(nameArray);
-		i = 0;
-		while (nameArray.length > object.spliceVar) {
-			var temp = nameArray.pop();
-			masterArray[i].push(temp);
-			i++;
-		}
-	return masterArray;
-	console.log(masterArray);
+	groupSize = object.groupNum;
+	// for (var i = 0; i < object.groupNum - 1; i++)  {
+	// 	masterArray[i] = nameArray.splice(0, object.spliceVar);
+	// }
+	// masterArray.push(nameArray);
+	// 	i = 0;
+	// 	while (nameArray.length > object.spliceVar) {
+	// 		var ell = nameArray.pop();
+	// 		masterArray[i].push(ell);
+	// 		i++;
+	// 	}
+	// return masterArray;
+	// console.log(masterArray);
 }
 
+function refresh() {
+	var count = 0;
+	for (var i = 0; i < nameArray.length; i++) {
+			$("#group"+count).append("<li>"+nameArray[i]+"</li>");
+			$("#group"+count).show();
+			count++;
+			if (count == groupSize) {
+				count = 0;
+			}
+	}
+}
 
 $(document).ready(function(){
 
-function refresh() {
-	for (var i = 0; i < masterArray.length; i++) {
-		for (var j = 0; j < masterArray[i].length; j++) {
-			$("#group"+i+"").append("<li>"+masterArray[i][j]+"</li>");
-		}
-	}
-};
-
-var isClicked = false;
-var object = button2;
+$("ul").hide();
 
 $("#refresh").on("click", function(){
-	if(masterArray.length == 0){
-		alert("Please select a number");
-	} else if (isClicked == false) {
-	refresh();
-	isClicked = true;
-	} else {
+	// if(masterArray.length == 0){
+	// 	alert("Please select a group number");
+	// } else {
 		$("ul").empty();
-		masterArray = [];
-		makeMaster(object);
+		// makeMaster(object);
 		refresh();
-	}
 });
 	
 
 $("#butt2").on("click", function(){
 	makeMaster(button2);
-	object = button2;
-	console.log(masterArray);
+	
 });
 	
 $("#butt3").on("click", function(){
 	makeMaster(button3);
-	console.log(masterArray);
+
 });
 
 $("#butt4").on("click", function(){
 	makeMaster(button4);
-	console.log(masterArray);
+	
 });
 
 $("#butt5").on("click", function(){
 	makeMaster(button5);
-	console.log(masterArray);
+	
 });
 
 $("#butt6").on("click", function(){
 	makeMaster(button6);
-	console.log(masterArray);
+
 });
 
 $("#butt7").on("click", function(){
 	makeMaster(button7);
-	console.log(masterArray);
+
 });
 
 $("#butt8").on("click", function(){
 	makeMaster(button8);
-	console.log(masterArray);
+	
 });
 
 $("#butt9").on("click", function(){
 	makeMaster(button9);
-	console.log(masterArray);
+	
 });
 
 $("#butt10").on("click", function(){
 	makeMaster(button10);
-	console.log(masterArray);
+	
 });
 
 });
