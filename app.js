@@ -35,7 +35,7 @@ function makeMaster(object) {
 		if($("input[name=group][value='size']").prop('checked')) {
 			groupSize = object.groupMem;
 			console.log(groupSize);
-		 } else if($("input[name=group][value='number']").prop('checked')) {
+		 } else if($("input[name=group][value='number']").prop('checked'a)) {
 			groupSize = object.groupNum;
 			console.log(groupSize);
 		}
@@ -78,7 +78,7 @@ $("h5").hide();
 
 $("#refresh").on("click", function(){
 	if (groupSize < 2) {
-		alert("You have not selected a group number");
+		alert("You have not selected a group number or size");
 	} else {
 		$("h5").hide();
 		$("ul").empty();
