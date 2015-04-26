@@ -3,8 +3,9 @@ var i =0;
 var nameArray = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
 
 
-function Button (groupNum) {
+function Button (groupNum, groupMem) {
 	this.groupNum = groupNum;
+	this.groupMem = groupMem;
 }
 
 function shuffleArray(array) {
@@ -17,21 +18,27 @@ function shuffleArray(array) {
     return array;
 }
 
-var button2 = new Button( 2);
-var button3 = new Button( 3);
-var button4 = new Button( 4);
-var button5 = new Button( 5);
-var button6 = new Button( 6);
-var button7 = new Button( 7);
-var button8 = new Button( 8);
-var button9 = new Button( 9);
-var button10 = new Button( 10);
+var button2 = new Button( 2, 10);
+var button3 = new Button( 3, 7);
+var button4 = new Button( 4, 5);
+var button5 = new Button( 5, 4);
+var button6 = new Button( 6, 3);
+var button7 = new Button( 7, 3);
+var button8 = new Button( 8, 3);
+var button9 = new Button( 9, 2);
+var button10 = new Button( 10, 2);
 
 var groupSize = 0;
 
 function makeMaster(object) {
 	nameArray = shuffleArray(nameArray);
-	groupSize = object.groupNum;
+		if($("input[name=group][value='size']").prop('checked')) {
+			groupSize = object.groupMem;
+			console.log(groupSize);
+		 } else if($("input[name=group][value='number']").prop('checked')) {
+			groupSize = object.groupNum;
+			console.log(groupSize);
+		}
 }
 
 function refresh() {
@@ -52,10 +59,28 @@ $(document).ready(function(){
 
 $("h5").hide();
 
+	$("button").on("mouseenter", function (){
+		$(this).css({"width": "150px"});
+		$(this).css({"heigth": "100px"});
+		
+	});
+
+	$("button").on("mouseleave", function (){
+		$(this).css({"width": "50px"});
+		$(this).css({"heigth": "50px"});
+		
+	});
+
+// $("input[name=groupS]:checked").val(5);
+// console.log(val);
+// $("input[name=groupN]:checked").val(6);
+// console.log(val);
+
 $("#refresh").on("click", function(){
 	if (groupSize < 2) {
 		alert("You have not selected a group number");
 	} else {
+		$("h5").hide();
 		$("ul").empty();
 		refresh();
 	}

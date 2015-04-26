@@ -6,14 +6,10 @@ button {
 }
 li {
 	list-style-type: none;
-	margin: 10px 0 0 0;
-}
-ul {
-	display: inline;
-	float: left;
-	margin: 20px 15px;
+	/*margin: 10px 0 0 0;*/
 }
 div {
 	display: inline;
 	float: left;
+	margin: 20px;
 }
