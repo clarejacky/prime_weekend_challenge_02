@@ -60,14 +60,12 @@ $(document).ready(function(){
 $("h5").hide();
 
 	$("button").on("mouseenter", function (){
-		$(this).css({"width": "150px"});
-		$(this).css({"heigth": "100px"});
+		$(this).css({"width": "60px"});
 		
 	});
 
 	$("button").on("mouseleave", function (){
 		$(this).css({"width": "50px"});
-		$(this).css({"heigth": "50px"});
 		
 	});
 
