@@ -35,7 +35,7 @@ function makeMaster(object) {
 		if($("input[name=group][value='size']").prop('checked')) {
 			groupSize = object.groupMem;
 			console.log(groupSize);
-		 } else if($("input[name=group][value='number']").prop('checked'a)) {
+		 } else if($("input[name=group][value='number']").prop('checked')) {
 			groupSize = object.groupNum;
 			console.log(groupSize);
 		}
